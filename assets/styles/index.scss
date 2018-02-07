@@ -1,2 +1,25 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+.top {
+  border-bottom: solid black 3px;
+}
+
+.mid {
+  border-bottom: solid black 3px;
+}
+
+.cent {
+  border-left: solid black 3px;
+  border-right: solid black 3px;
+}
+
+.row {
+  height: 30vh;
+  background-color: pink;
+}
+
+.col-xs-4 {
+  height: 30vh;
+}
