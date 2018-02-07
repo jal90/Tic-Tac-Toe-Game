@@ -15,11 +15,16 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   border-right: solid black 3px;
 }
 
-.row {
-  height: 30vh;
+.col-xs-4 {
+  height: 0;
+  padding-bottom: 30%;
   background-color: pink;
 }
 
-.col-xs-4 {
-  height: 30vh;
+body {
+  background-color: gray;
+}
+
+h1 {
+  text-align: center;
 }
