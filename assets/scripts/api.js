@@ -1,5 +1,5 @@
-const config = require('../config')
-const store = require('../store')
+const config = require('./config')
+const store = require('./store')
 
 const signUp = function (data) {
   return $.ajax({
@@ -8,13 +8,13 @@ const signUp = function (data) {
     headers: {
       contentType: 'application/json'
     },
-    data: {
-      'credentials': {
-        'email': 'asasdfadsfasdfasfsefadfdfblahblah@example.email',
-        'password': 'an example password',
-        'password_confirmation': 'an example password'
-      }
-    }
+    data
+    // data: {
+      // 'credentials': {
+        // 'email': 'asaasdfasdasdfasdfasdfasdffasdfsdfadsfasdfasfsefadfdfblahblah@example.email',
+        // 'password': 'an example password'
+      // }
+    // }
   })
 }
 

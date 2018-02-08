@@ -1,3 +1,8 @@
+const api = require('./api')
+const getFormFields = require('../../lib/get-form-fields')
+
+
+
 const gameBoard = {
   upLeft: '',
   upCent: '',
@@ -134,14 +139,26 @@ const win = function () {
   }
 }
 
+const onSignUp = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.signUp(data)
+}
+
+const boardHandlers = () => {
+  $('.col-xs-4')
+    .hover(hoverOn, hoverOff)
+    .on('click', function () { move($(this).attr('id')) })
+    .on('click', gameOver)
+    .on('click', win)
+}
+
 module.exports = {
   gameBoard,
-  gameOver,
   changeTurns,
   showX,
   showO,
   move,
-  hoverOn,
-  hoverOff,
-  win
+  onSignUp,
+  boardHandlers
 }
