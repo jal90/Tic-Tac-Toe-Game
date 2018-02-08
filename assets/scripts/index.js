@@ -49,6 +49,8 @@ const changeTurns = function () {
 const showX = function (id) {
   if (changeTurns() === x) {
     $('#' + id).find('.x').show()
+    $('#' + id).find('.hover-x').remove()
+    $('#' + id).find('.hover-o').remove()
   }
 }
 
@@ -116,6 +118,7 @@ const win = function () {
   if (total >= 5) { // this is because it takes at least 5 turns total to win the game. So don't even bother checking before then
     if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('#feedback').html('X WINSSSSS')
+      gameOver()
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('#feedback').html('O WINSSSSS')
     } else if (gameBoard.midLeft === 'x' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
