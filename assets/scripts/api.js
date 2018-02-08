@@ -9,15 +9,34 @@ const signUp = function (data) {
       contentType: 'application/json'
     },
     data
-    // data: {
-      // 'credentials': {
-        // 'email': 'asaasdfasdasdfasdfasdfasdffasdfsdfadsfasdfasfsefadfdfblahblah@example.email',
-        // 'password': 'an example password'
-      // }
-    // }
+  })
+}
+
+const signIn = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-in',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json'
+    },
+    data
+  })
+}
+
+const signOut = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-out/' + store.user.id,
+    method: 'DELETE',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
   })
 }
 
 module.exports = {
-  signUp
+  signUp,
+  signIn,
+  signOut
 }

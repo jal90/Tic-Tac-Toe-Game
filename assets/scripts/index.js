@@ -17,4 +17,6 @@ $(() => {
 $(() => {
   events.boardHandlers()
   $('#sign-up').on('submit', events.onSignUp)
+  $('#sign-in').on('submit', events.onSignIn)
+  $('#sign-out').on('submit', events.onSignOut)
 })

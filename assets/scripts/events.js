@@ -1,7 +1,7 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
-
-
+const store = require('./store')
+const ui = require('./ui')
 
 const gameBoard = {
   upLeft: '',
@@ -145,6 +145,18 @@ const onSignUp = function (event) {
   api.signUp(data)
 }
 
+const onSignIn = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.signIn(data)
+    .then(ui.signInSuccess)
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+  api.signOut(store.data)
+}
+
 const boardHandlers = () => {
   $('.col-xs-4')
     .hover(hoverOn, hoverOff)
@@ -160,5 +172,7 @@ module.exports = {
   showO,
   move,
   onSignUp,
+  onSignIn,
+  onSignOut,
   boardHandlers
 }
