@@ -157,7 +157,7 @@ const onSignIn = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  api.signOut(store.data)
+  api.signOut()
     .then(ui.signOutSuccess)
 }
 
@@ -167,6 +167,11 @@ const onChangePw = function (event) {
   api.changePw(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
+}
+
+const onCreateGame = function (event) {
+  event.preventDefault()
+  api.createGame()
 }
 
 const boardHandlers = () => {
@@ -187,5 +192,6 @@ module.exports = {
   onSignIn,
   onSignOut,
   onChangePw,
+  onCreateGame,
   boardHandlers
 }
