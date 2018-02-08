@@ -13,3 +13,10 @@ fix x and o elements so they fit within containers at smaller screen sizes
 
 freeze the board so that at gameover no more inputs can be made
 incorporate gameOver into win()?
+
+
+
+INTRO STATE - SIGN-UP, SIGN-IN
+GAME STATE - ONCE SIGNED IN, SEE THE BOARD (NO LONGER ABLE TO SIGN-IN)
+WANT TO SEE INITIAL STATE AGAIN? - LOG OUT,
+MAYBE NEW GAME, CHANGE PASSWORD
