@@ -21,6 +21,28 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   background-color: pink;
 }
 
+.x {
+  text-align: center;
+  font-size: 12em;
+}
+
+.o {
+  text-align: center;
+  font-size: 12em;
+}
+
+.hover-x {
+  text-align: center;
+  font-size: 12em;
+  opacity: 0.5;
+}
+
+.hover-o {
+  text-align: center;
+  font-size: 12em;
+  opacity: 0.5;
+}
+
 body {
   background-color: gray;
 }
