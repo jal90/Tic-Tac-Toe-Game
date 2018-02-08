@@ -18,33 +18,37 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .col-xs-4 {
   height: 0;
   padding-bottom: 30%;
-  background-color: pink;
 }
 
 .x {
   text-align: center;
   font-size: 12em;
+  display: none;
 }
 
 .o {
   text-align: center;
   font-size: 12em;
+  display: none;
 }
 
 .hover-x {
   text-align: center;
   font-size: 12em;
   opacity: 0.5;
+  display: none;
 }
 
 .hover-o {
   text-align: center;
   font-size: 12em;
   opacity: 0.5;
+  display: none;
 }
 
 body {
-  background-color: gray;
+  background-color: pink;
+  font-family: cursive;
 }
 
 h1 {
