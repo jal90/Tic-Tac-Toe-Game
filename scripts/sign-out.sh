@@ -1,6 +1,3 @@
-#!/bin/bash
-
-# sh scripts/json/sign-in.sh
 
 curl "http://tic-tac-toe.wdibos.com/sign-out/{$ID}" \
   --include \

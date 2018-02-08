@@ -1,7 +1,7 @@
 const api = require('./api')
 const getFormFields = require('../../lib/get-form-fields')
-const store = require('./store')
 const ui = require('./ui')
+const store = require('./store')
 
 const gameBoard = {
   upLeft: '',
@@ -172,11 +172,39 @@ const onChangePw = function (event) {
 const onCreateGame = function (event) {
   event.preventDefault()
   api.createGame()
+  store.game = game.id // TODO: move this to a UI thing
+}
+// this was before I knew about adding data to html elements!
+// const upLeft = 0
+// const upCent = 1
+// const upRight = 2
+// const midLeft = 3
+// const midCent = 4
+// const midRight = 5
+// const botLeft = 6
+// const botCent = 7
+// const botRight = 8
+
+const onUpdateGame = function (id) {
+  const attr = document.getElementById(id)
+  gameData.game.cell.index = attr.dataset.cellIndex // index will be whichever square is clicked + !!!check that this is working properly
+  gameData.game.cell.value = changeTurns() // value will be x or o
+  console.log('GAME DATA IS ', gameData)
+}
+const gameData = {
+  'game': {
+    'cell': {
+      'index': 0,
+      'value': 'x'
+    },
+    'over': false
+  }
 }
 
 const boardHandlers = () => {
   $('.col-xs-4')
     .hover(hoverOn, hoverOff)
+    .on('click', function () { onUpdateGame($(this).attr('id')) })
     .on('click', function () { move($(this).attr('id')) })
     .on('click', gameOver)
     .on('click', win)
@@ -184,10 +212,10 @@ const boardHandlers = () => {
 
 module.exports = {
   gameBoard,
-  changeTurns,
-  showX,
-  showO,
-  move,
+  changeTurns, // probably not necessary
+  showX, // probably not necessary
+  showO, // probably not necessary
+  move, // probably not necessary
   onSignUp,
   onSignIn,
   onSignOut,
