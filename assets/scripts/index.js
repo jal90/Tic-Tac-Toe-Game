@@ -57,6 +57,8 @@ const showX = function (id) {
 const showO = function (id) {
   if (changeTurns() === o) {
     $('#' + id).find('.o').show()
+    $('#' + id).find('.hover-x').remove()
+    $('#' + id).find('.hover-o').remove()
   }
 }
 
