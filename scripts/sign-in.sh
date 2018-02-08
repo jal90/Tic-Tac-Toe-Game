@@ -8,8 +8,8 @@ curl "http://tic-tac-toe.wdibos.com/sign-in" \
   --header "Content-Type: application/json" \
   --data '{
   "credentials": {
-    "email": "an@example.email",
-    "password": "an example password"
+    "email": "'"${EMAIL}"'",
+    "password": "'"${PASSWORD}"'"
   }
 }'
 

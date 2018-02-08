@@ -157,6 +157,12 @@ const onSignOut = function (event) {
   api.signOut(store.data)
 }
 
+const onChangePw = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePw(data)
+}
+
 const boardHandlers = () => {
   $('.col-xs-4')
     .hover(hoverOn, hoverOff)
@@ -174,5 +180,6 @@ module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
+  onChangePw,
   boardHandlers
 }
