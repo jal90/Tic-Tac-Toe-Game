@@ -56,7 +56,7 @@ const createGameSuccess = function (data) {
   store.game = data.game
   console.log('store.game is ', store.game)
   console.log('data.game is ', data.game)
-  $('#left-feedback').text('Game id#: ' + data.game.id)
+  $('#left-feedback').append('Game id#: ' + data.game.id)
   $('.col-xs-4').children().hide()
   events.over = false
   console.log(events.over)

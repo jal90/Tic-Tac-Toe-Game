@@ -98,22 +98,23 @@ const gameOver = function () {
   let total = 0
   for (const key in gameBoard) {
     if (gameBoard[key] !== '') {
-      ++total
+      total++
+      console.log('total is ', total)
     }
   }
   if (total === 9) {
-    $('#feedback').html('Game is Over! It\'s a tie')
-    $('#left-feedback').html($('#create-game'))
-    console.log(store.game)
+    $('#left-feedback').append($('#create-game'))
     over = true
+    gameData.game.over = true
+    console.log('game data is ', gameData)
   }
 }
 
 const gameWon = function () {
-  $('#left-feedback').html($('#create-game'))
   over = true
   console.log('game is won')
   gameData.game.over = true
+  console.log('game data is ', gameData)
 }
 
 // checking for 3 in a row, then running gameWon()
