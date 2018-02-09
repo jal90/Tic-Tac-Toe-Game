@@ -49,9 +49,13 @@ const createGameSuccess = function (data) {
   console.log('data.game is ', data.game)
 }
 
-const getGameSuccess = function (data) {
+const showGameSuccess = function (data) {
   console.log('store.game is ', store.game)
   console.log('data.game is ', data.game)
+}
+
+const getGamesSuccess = function (data) {
+  console.log('games ARE ', data.games)
 }
 
 module.exports = {
@@ -63,5 +67,6 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   createGameSuccess,
-  getGameSuccess
+  showGameSuccess,
+  getGamesSuccess
 }

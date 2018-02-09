@@ -213,9 +213,14 @@ const onShowGame = function (event) {
   const data = getFormFields(event.target)
   const game = data.game
   api.showGame(game.id)
-    .then(ui.getGameSuccess)
+    .then(ui.showGameSuccess)
 }
 
+const onGetGames = function (event) {
+  event.preventDefault()
+  api.getGames()
+    .then(ui.getGamesSuccess)
+}
 const boardHandlers = () => {
   $('.col-xs-4')
     .hover(hoverOn, hoverOff)
@@ -238,5 +243,6 @@ module.exports = {
   onChangePw,
   onCreateGame,
   onShowGame,
+  onGetGames,
   boardHandlers
 }

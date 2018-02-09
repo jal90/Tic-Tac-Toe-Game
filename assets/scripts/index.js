@@ -22,4 +22,5 @@ $(() => {
   $('#change-pw').on('submit', events.onChangePw)
   $('#create-game').on('submit', events.onCreateGame)
   $('#show-game').on('submit', events.onShowGame)
+  $('#get-games').on('submit', events.onGetGames)
 })

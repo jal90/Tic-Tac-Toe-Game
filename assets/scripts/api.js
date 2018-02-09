@@ -81,6 +81,17 @@ const showGame = function (id) {
   })
 }
 
+const getGames = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games/',
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -88,5 +99,6 @@ module.exports = {
   changePw,
   createGame,
   updateGame,
-  showGame
+  showGame,
+  getGames
 }
