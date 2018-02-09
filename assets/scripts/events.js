@@ -218,6 +218,8 @@ const onShowGame = function (event) {
     .then(ui.showGameSuccess)
 }
 
+
+
 const onGetGames = function (event) {
   event.preventDefault()
   api.getGames()
@@ -242,6 +244,8 @@ const gameState = function () {
   $('#game-state').show()
   $('#options-state').hide()
 }
+
+
 
 const introState = function () {
   window.location.reload()

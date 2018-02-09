@@ -2,7 +2,10 @@ TO DO:
 
   REQUIREMENTS:
   Do not allow users to add an X or O to any spaces after the game is over
+  GAME UPDATE OVER === TRUE WHEN GAME IS OVER!
 
+
+  I rendered game when showing by ID. need to make it non-interactive
 
 
 
