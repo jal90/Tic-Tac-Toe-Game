@@ -16,47 +16,146 @@
 
 <body class="container-fluid">
 
-  <h1>Tickity Tackity Toe</h1>
+  <div class="intro">
+    <h1>Tickity Tackity Toe</h1>
+    <p>Great adventurer, you've stumbled upon Tickity Tackity Toe, the world's greatest game</p>
+    <p>Choose your opponent wisely, for in this game, the score is final</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#auth-modal" id="venture-forth">
+    Venture forth!
+  </button>
+  </div>
 
-  <form id="sign-up">
-    <input name="credentials[email]" type="text" placeholder="an@example.email">
-    <input name="credentials[password]" type="text" placeholder="an example password">
-    <input type="submit" value="Sign Up!">
-  </form>
 
-  <form id="sign-in">
-    <input name="credentials[email]" type="text" placeholder="an@example.email">
-    <input name="credentials[password]" type="text" placeholder="an example password">
-    <input type="submit" value="Sign In!">
-  </form>
+  <!-- Modal -->
+  <div class="modal fade" id="auth-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          <h3 class="modal-title" id="exampleModalLabel">Welcome, friend!</h3>
+          <h4> This is a slight formality you must complete to pass </h4>
 
-  <form id="sign-out">
-    <input type="submit" value="Sign Out!">
-  </form>
+          <div class="row">
+            <div class="col-xs-6">
+              <h3> Sign-up</h3>
+            </div>
+            <div class="col-xs-6">
+              <h3> Sign-in</h3>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-6">
+              <form id="sign-up" class="sign-up">
+                <input name="credentials[email]" type="text" placeholder="an@example.email">
+                <input name="credentials[password]" type="password" placeholder="an example password">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <input type="submit" value="Sign Up!">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-xs-6">
+              <form id="sign-in">
+                <input name="credentials[email]" type="text" placeholder="an@example.email">
+                <input name="credentials[password]" type="password" placeholder="an example password">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <input type="submit" value="Sign In!">
+                  </div>
+                </div>
+              </form>
+            </div>
 
-  <form id="change-pw">
-    <input name="passwords[old]" type="text" placeholder="an example password">
-    <input name="passwords[new]" type="text" placeholder="an example password">
-    <input type="submit" value="Change password">
-  </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="sign-up-error">problem signing up, try again </div>
+          <div class="sign-in-error">problem signing up, try again </div>
+          <button type="button" class="btn btn-primary onward" data-dismiss="modal" id="onward">Onward!</button>
 
-  <form id="create-game">
-    <input type="submit" value="Create Game">
-  </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <form id="show-game">
-    <input name="game[id]" type="text" placeholder="game id here">
-    <input type="submit" value="Get game">
-  </form>
+  <!-- OPTIONS-STATE -->
+  <div id="options-state" class="options-state">
 
-  <form id="get-games">
-    <input type="submit" value="See all games">
-  </form>
+    <h1> Options </h1>
+    <form id="create-game">
+      <fieldset>
+        <legend> Start a game. No more stalling </legend>
+        <input type="submit" value="Start New Game">
+      </fieldset>
+    </form>
 
-  <div class="container">
+
+    <form id="sign-out">
+      <fieldset>
+        <legend>Sign out and leave this place</legend>
+        <input type="submit" value="Sign Out">
+      </fieldset>
+    </form>
+
+    <form id="show-game">
+      <fieldset>
+        <legend>See game by id#</legend>
+        <input name="game[id]" type="text" placeholder="game id here">
+        <input type="submit" value="See game by id#">
+      </fieldset>
+    </form>
+
+    <form id="get-games">
+      <fieldset>
+        <legend> See all games </legend>
+        <input type="submit" value="See all games">
+      </fieldset>
+    </form>
+
+    <form id="change-pw">
+      <fieldset>
+        <legend> Change your password</legend>
+        <input name="passwords[old]" type="password" placeholder="current password">
+        <input name="passwords[new]" type="password" placeholder="new password">
+        <input type="submit" value="Change password">
+      </fieldset>
+    </form>
+
+
+  </div>
+
+
+  <!-- SIGN OUT STATE -->
+  <div class="modal" tabindex="-1" role="dialog" id="sign-out-state">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <p>Signed out successfully</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="return-to-title">Return to title</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME STATE -->
+  <div id="game-state" class="game-container">
 
     <div class="row">
-      <div class="col-xs-2"></div> <!-- left column, good place for buttons -->
+      <div class="col-xs-2" id="left-feedback"></div>
+      <!-- left column, good place for buttons -->
       <div class="col-xs-8">
         <div class="row top">
           <div class="col-xs-4" id="upLeft" data-cell-index='0'>
@@ -79,7 +178,8 @@
           </div>
         </div>
       </div>
-      <div class="col-xs-2" id="feedback"></div> <!-- right column, where feedback lives -->
+      <div class="col-xs-2" id="feedback"></div>
+      <!-- right column, where feedback lives -->
     </div>
 
     <div class="row">
@@ -97,7 +197,8 @@
             <div class="o">O</div>
             <div class="hover-x">X</div>
             <div class="hover-o">O</div>
-            <div class="modal"> MODAL GOES HERE </div> <!-- MODAL ON TOP! -->
+            <div class="modal"> MODAL GOES HERE </div>
+            <!-- MODAL ON TOP! -->
           </div>
           <div class="col-xs-4" id="midRight" data-cell-index='5'>
             <div class="x">X</div>
@@ -139,5 +240,6 @@
 
 
   </div>
+</body>
 
 </html>

@@ -1,33 +1,41 @@
 const store = require('./store')
 
 const signUpSuccess = function (data) {
-  $('#sign-up').text('Signed up successfully')
+  $('#sign-up').text('Signed up successfully, now please sign in')
   $('#sign-up').css('background-color', 'green')
-  console.log(data)
+  $('.sign-up-error').hide()
+  $('.sign-in-error').hide()
 }
 
 const signUpFailure = function (error) {
-  $('#sign-up').text('Error on signing up')
-  $('#sign-up').css('background-color', 'red')
+  $('#onward').hide()
+  $('.sign-up-error').show()
   console.error(error)
 }
 
 const signInSuccess = function (data) {
   console.log(data)
-  $('#sign-in').text('Signed up successfully')
+  $('#sign-in').text('Signed in successfully')
   $('#sign-in').css('background-color', 'green')
+  $('.sign-in-error').hide()
+  $('.sign-up-error').hide()
+  $('#sign-up').hide()
+  $('#onward').show()
   store.user = data.user
+  // $('#game-state').show()
+  // $('#ui-container').hide()
+  // $('h1').hide()
 }
 
 const signInFailure = function (error) {
-  $('#sign-in').text('Error on signing IN')
-  $('#sign-in').css('background-color', 'red')
+  $('#onward').hide()
+  $('.sign-in-error').show()
   console.error(error)
 }
 
 const signOutSuccess = function (data) {
-  $('#sign-in').text('signed out successfully')
-  $('#sign-in').css('background-color', 'purple')
+  $('#options-state').hide()
+  $('#sign-out-state').show()
   console.log('signed out successfully')
 }
 
@@ -47,6 +55,7 @@ const createGameSuccess = function (data) {
   store.game = data.game
   console.log('store.game is ', store.game)
   console.log('data.game is ', data.game)
+  $('#left-feedback').text('Game id#: ' + data.game.id)
 }
 
 const showGameSuccess = function (data) {

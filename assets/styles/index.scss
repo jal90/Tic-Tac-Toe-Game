@@ -2,6 +2,12 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+.game-container {
+  display: none;
+  width: 90%; // this effects height as well
+  margin: auto; // this centers it left-right, but keeps it pinned to top
+}
+
 .top {
   border-bottom: solid black 3px;
 }
@@ -17,7 +23,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .col-xs-4 {
   height: 0;
-  padding-bottom: 30%;
+  padding-bottom: 30%; // this is what affects the height of the board, but they don't look square at anything less
 }
 
 .x {
@@ -52,5 +58,49 @@ body {
 }
 
 h1 {
+  font-size: 300%;
+  margin-bottom: 5%;
+}
+
+p {
+  margin-bottom: 5%;
+}
+
+.intro {
   text-align: center;
+}
+
+.modal {
+  margin-top: 10%;
+}
+
+.sign-up {
+  border-right: solid black 1px;
+}
+
+.modal-center {
+  text-align: center;
+}
+
+.options-state {
+  display: none;
+  text-align: center;
+}
+
+.onward {
+  display: none;
+}
+
+.sign-up-error {
+  display: none;
+  background-color: red;
+}
+
+.sign-in-error {
+  display: none;
+  background-color: red;
+}
+
+form {
+  margin: 3%;
 }

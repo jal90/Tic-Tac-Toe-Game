@@ -76,6 +76,7 @@ const hoverOn = function () {
 }
 
 const hoverOff = function () {
+  $('#feedback').html('')
   if (changeTurns() === 'x') {
     $(this).find('.hover-x').hide()
   } else if (changeTurns() === 'o') {
@@ -174,6 +175,7 @@ const onCreateGame = function (event) {
   event.preventDefault()
   api.createGame()
     .then(ui.createGameSuccess)
+    .then(gameState())
 }
 // this was before I knew about adding data to html elements!
 // const upLeft = 0
@@ -231,6 +233,20 @@ const boardHandlers = () => {
     .on('click', onUpdateGame)
 }
 
+const optionsState = function () {
+  $('#options-state').show()
+  $('.intro').hide()
+}
+
+const gameState = function () {
+  $('#game-state').show()
+  $('#options-state').hide()
+}
+
+const introState = function () {
+  window.location.reload()
+}
+
 module.exports = {
   gameBoard,
   changeTurns, // probably not necessary
@@ -244,5 +260,8 @@ module.exports = {
   onCreateGame,
   onShowGame,
   onGetGames,
-  boardHandlers
+  boardHandlers,
+  introState,
+  optionsState,
+  gameState
 }

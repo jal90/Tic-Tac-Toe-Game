@@ -23,4 +23,6 @@ $(() => {
   $('#create-game').on('submit', events.onCreateGame)
   $('#show-game').on('submit', events.onShowGame)
   $('#get-games').on('submit', events.onGetGames)
+  $('#onward').on('click', events.optionsState)
+  $('#return-to-title').on('click', events.introState)
 })
