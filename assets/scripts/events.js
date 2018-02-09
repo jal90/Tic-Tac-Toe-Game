@@ -92,6 +92,7 @@ const gameOver = function () {
   }
   if (total === 9) {
     $('#feedback').html('Game is Over!')
+    console.log(store.game)
   }
 }
 
@@ -172,7 +173,7 @@ const onChangePw = function (event) {
 const onCreateGame = function (event) {
   event.preventDefault()
   api.createGame()
-  store.game = game.id // TODO: move this to a UI thing
+    .then(ui.createGameSuccess)
 }
 // this was before I knew about adding data to html elements!
 // const upLeft = 0
@@ -185,12 +186,13 @@ const onCreateGame = function (event) {
 // const botCent = 7
 // const botRight = 8
 
-const onUpdateGame = function (id) {
+const updateObject = function (id) {
   const attr = document.getElementById(id)
   gameData.game.cell.index = attr.dataset.cellIndex // index will be whichever square is clicked + !!!check that this is working properly
   gameData.game.cell.value = changeTurns() // value will be x or o
   console.log('GAME DATA IS ', gameData)
 }
+
 const gameData = {
   'game': {
     'cell': {
@@ -201,13 +203,27 @@ const gameData = {
   }
 }
 
+const onUpdateGame = function (event) {
+  event.preventDefault()
+  api.updateGame(gameData)
+}
+
+const onShowGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const game = data.game
+  api.showGame(game.id)
+    .then(ui.getGameSuccess)
+}
+
 const boardHandlers = () => {
   $('.col-xs-4')
     .hover(hoverOn, hoverOff)
-    .on('click', function () { onUpdateGame($(this).attr('id')) })
+    .on('click', function () { updateObject($(this).attr('id')) })
     .on('click', function () { move($(this).attr('id')) })
     .on('click', gameOver)
     .on('click', win)
+    .on('click', onUpdateGame)
 }
 
 module.exports = {
@@ -221,5 +237,6 @@ module.exports = {
   onSignOut,
   onChangePw,
   onCreateGame,
+  onShowGame,
   boardHandlers
 }

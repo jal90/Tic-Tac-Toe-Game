@@ -60,8 +60,20 @@ const createGame = function () {
 
 const updateGame = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/games' + data.game.id, //how access current game id?
-    method: 'POST',
+    url: config.apiOrigin + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const showGame = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + id,
+    method: 'GET',
     headers: {
       contentType: 'application/json',
       Authorization: 'Token token=' + store.user.token
@@ -74,5 +86,7 @@ module.exports = {
   signIn,
   signOut,
   changePw,
-  createGame
+  createGame,
+  updateGame,
+  showGame
 }

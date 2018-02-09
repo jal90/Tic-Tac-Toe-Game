@@ -43,6 +43,17 @@ const changePasswordFailure = function (error) {
   console.error(error)
 }
 
+const createGameSuccess = function (data) {
+  store.game = data.game
+  console.log('store.game is ', store.game)
+  console.log('data.game is ', data.game)
+}
+
+const getGameSuccess = function (data) {
+  console.log('store.game is ', store.game)
+  console.log('data.game is ', data.game)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -50,5 +61,7 @@ module.exports = {
   signInFailure,
   signOutSuccess,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  createGameSuccess,
+  getGameSuccess
 }
