@@ -52,6 +52,20 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: none;
 }
 
+.win-x {
+  text-align: center;
+  font-size: 12em;
+  display: none;
+}
+
+.win-o {
+  text-align: center;
+  font-size: 12em;
+  display: none;
+}
+
+
+
 body {
   background-color: pink;
   font-family: cursive;
@@ -103,4 +117,8 @@ p {
 
 form {
   margin: 3%;
+}
+
+.occupied {
+  display: none;
 }

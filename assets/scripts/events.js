@@ -3,6 +3,8 @@ const getFormFields = require('../../lib/get-form-fields')
 const ui = require('./ui')
 const store = require('./store')
 
+let over = false
+
 const gameBoard = {
   upLeft: '',
   upCent: '',
@@ -52,31 +54,36 @@ const showO = function (id) {
 }
 
 const move = function (id) {
-  if (gameBoard[id] === '') {
-    console.log('CHANGE TURNS === ', changeTurns())
-    if (changeTurns() === 'x') {
-      showX(id)
-    } else if (changeTurns() === 'o') {
-      showO(id)
+  console.log(over)
+  if (over === false) {
+    if (gameBoard[id] === '') {
+      console.log('CHANGE TURNS === ', changeTurns())
+      if (changeTurns() === 'x') {
+        showX(id)
+      } else if (changeTurns() === 'o') {
+        showO(id)
+      }
+      gameBoard[id] = changeTurns()
+    } else {
+      $('.occupied').show()
     }
-    gameBoard[id] = changeTurns()
-  } else {
-    $('#feedback').html('PLEASE PICK EMPTY SPACE')
+    console.log(gameBoard)
   }
-  console.log(gameBoard)
 }
 
 // for seeing choice with mouse hover
 const hoverOn = function () {
-  if (changeTurns() === 'x') {
-    $(this).find('.hover-x').show()
-  } else if (changeTurns() === 'o') {
-    $(this).find('.hover-o').show()
+  if (over === false) {
+    if (changeTurns() === 'x') {
+      $(this).find('.hover-x').show()
+    } else if (changeTurns() === 'o') {
+      $(this).find('.hover-o').show()
+    }
   }
 }
 
 const hoverOff = function () {
-  $('#feedback').html('')
+  $('.occupied').hide()
   if (changeTurns() === 'x') {
     $(this).find('.hover-x').hide()
   } else if (changeTurns() === 'o') {
@@ -92,11 +99,21 @@ const gameOver = function () {
     }
   }
   if (total === 9) {
-    $('#feedback').html('Game is Over!')
+    $('#feedback').html('Game is Over! It\'s a tie')
+    $('#left-feedback').append($('#create-game'))
     console.log(store.game)
+    over = true
   }
 }
 
+const gameWon = function () {
+  $('#left-feedback').html($('#create-game'))
+  over = true
+  console.log('game is won')
+  gameData.game.over = true
+}
+
+// checking for 3 in a row, then running gameWon()
 const win = function () {
   let total = 0
   for (const key in gameBoard) {
@@ -107,36 +124,52 @@ const win = function () {
   if (total >= 5) { // this is because it takes at least 5 turns total to win the game. So don't even bother checking before then
     if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('#feedback').html('X WINSSSSS')
+      gameWon()
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('#feedback').html('O WINSSSSS')
+      gameWon()
     } else if (gameBoard.midLeft === 'x' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
       $('#feedback').html('X WINSSSSS')
+      gameWon()
     } else if (gameBoard.midLeft === 'o' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
       $('#feedback').html('O WINSSSSS')
+      gameWon()
     } else if (gameBoard.botLeft === 'x' && gameBoard.botLeft === gameBoard.botCent && gameBoard.botLeft === gameBoard.botRight) {
       $('#feedback').html('X WINSSSSS')
+      gameWon()
     } else if (gameBoard.botLeft === 'o' && gameBoard.botLeft === gameBoard.botCent && gameBoard.botLeft === gameBoard.botRight) {
       $('#feedback').html('O WINSSSSS')
+      gameWon()
     } else if (gameBoard.botLeft === 'x' && gameBoard.botLeft === gameBoard.midCent && gameBoard.botLeft === gameBoard.upRight) {
       $('#feedback').html('X WINSSSSS')
+      gameWon()
     } else if (gameBoard.botLeft === 'o' && gameBoard.botLeft === gameBoard.midCent && gameBoard.botLeft === gameBoard.upRight) {
       $('#feedback').html('O WINSSSSS')
+      gameWon()
     } else if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.midCent && gameBoard.upLeft === gameBoard.botRight) {
       $('#feedback').html('X WINSSSSS')
+      gameWon()
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.midCent && gameBoard.upLeft === gameBoard.botRight) {
       $('#feedback').html('O WINSSSSS')
+      gameWon()
     } else if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.midLeft && gameBoard.midLeft === gameBoard.botLeft) {
       $('#feedback').html('X WINSSSSS')
+      gameWon()
     } else if (gameBoard.midLeft === 'o' && gameBoard.upLeft === gameBoard.midLeft && gameBoard.midLeft === gameBoard.botLeft) {
       $('#feedback').html('O WINSSSSS')
+      gameWon()
     } else if (gameBoard.upCent === 'x' && gameBoard.upCent === gameBoard.midCent && gameBoard.midCent === gameBoard.botCent) {
       $('#feedback').html('X WINSSSSS')
+      gameWon()
     } else if (gameBoard.upCent === 'o' && gameBoard.upCent === gameBoard.midCent && gameBoard.midCent === gameBoard.botCent) {
       $('#feedback').html('O WINSSSSS')
+      gameWon()
     } else if (gameBoard.upRight === 'x' && gameBoard.upRight === gameBoard.midRight && gameBoard.midRight === gameBoard.botRight) {
       $('#feedback').html('X WINSSSSS')
+      gameWon()
     } else if (gameBoard.upRight === 'o' && gameBoard.upRight === gameBoard.midRight && gameBoard.midRight === gameBoard.botRight) {
       $('#feedback').html('O WINSSSSS')
+      gameWon()
     }
   }
 }
@@ -173,6 +206,10 @@ const onChangePw = function (event) {
 
 const onCreateGame = function (event) {
   event.preventDefault()
+  over = false
+  for (const key in gameBoard) {
+    gameBoard[key] = ''
+  }
   api.createGame()
     .then(ui.createGameSuccess)
     .then(gameState())
@@ -190,9 +227,12 @@ const onCreateGame = function (event) {
 
 const updateObject = function (id) {
   const attr = document.getElementById(id)
-  gameData.game.cell.index = attr.dataset.cellIndex // index will be whichever square is clicked + !!!check that this is working properly
-  gameData.game.cell.value = changeTurns() // value will be x or o
-  console.log('GAME DATA IS ', gameData)
+  console.log('over is ', over)
+  if (over === false) {
+    gameData.game.cell.index = attr.dataset.cellIndex // index will be whichever square is clicked + !!!check that this is working properly
+    gameData.game.cell.value = changeTurns() // value will be x or o
+    console.log('GAME DATA IS ', gameData)
+  }
 }
 
 const gameData = {
@@ -208,6 +248,7 @@ const gameData = {
 const onUpdateGame = function (event) {
   event.preventDefault()
   api.updateGame(gameData)
+    .then(console.log('inside onUpdateGame gameData is ', gameData))
 }
 
 const onShowGame = function (event) {
@@ -217,8 +258,6 @@ const onShowGame = function (event) {
   api.showGame(game.id)
     .then(ui.showGameSuccess)
 }
-
-
 
 const onGetGames = function (event) {
   event.preventDefault()
@@ -230,9 +269,9 @@ const boardHandlers = () => {
     .hover(hoverOn, hoverOff)
     .on('click', function () { updateObject($(this).attr('id')) })
     .on('click', function () { move($(this).attr('id')) })
+    .on('click', onUpdateGame)
     .on('click', gameOver)
     .on('click', win)
-    .on('click', onUpdateGame)
 }
 
 const optionsState = function () {
@@ -245,9 +284,7 @@ const gameState = function () {
   $('#options-state').hide()
 }
 
-
-
-const introState = function () {
+const introState = function () { // need to not refresh the page! without refreshing, find another way to reset forms
   window.location.reload()
 }
 

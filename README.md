@@ -6,7 +6,7 @@ TO DO:
 
 
   I rendered game when showing by ID. need to make it non-interactive
-
+Must find a way to reset forms (after signing out, then signing back in) without refreshing page.
 
 
 fix x and o elements so they fit within containers at smaller screen sizes
@@ -20,8 +20,11 @@ fix x and o elements so they fit within containers at smaller screen sizes
 
 
 
-freeze the board so that at gameover no more inputs can be made
-incorporate gameOver into win()?
+ok. game frozen when won/over. now:
+
+click a button to start a new game
+  clickhandlers need to be back on
+  and col-xs-4 children need to be hidden again
 
 
 
