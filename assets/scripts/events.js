@@ -4,6 +4,7 @@ const ui = require('./ui')
 const store = require('./store')
 
 let over = false
+let clicked = false
 
 const gameBoard = {
   upLeft: '',
@@ -37,22 +38,6 @@ const changeTurns = function () {
   }
 }
 
-const showX = function (id) {
-  if (changeTurns() === x) {
-    $('#' + id).find('.x').show()
-    $('#' + id).find('.hover-x').remove()
-    $('#' + id).find('.hover-o').remove()
-  }
-}
-
-const showO = function (id) {
-  if (changeTurns() === o) {
-    $('#' + id).find('.o').show()
-    $('#' + id).find('.hover-x').remove()
-    $('#' + id).find('.hover-o').remove()
-  }
-}
-
 const move = function (id) {
   console.log(over)
   if (over === false) {
@@ -71,6 +56,24 @@ const move = function (id) {
   }
 }
 
+const showX = function (id) {
+  if (changeTurns() === x) {
+    $('#' + id).find('.x').show()
+    clicked = true
+    $('#' + id).find('.hover-x').html('')
+    $('#' + id).find('.hover-o').html('')
+  }
+}
+
+const showO = function (id) {
+  if (changeTurns() === o) {
+    $('#' + id).find('.o').show()
+    clicked = true
+    $('#' + id).find('.hover-x').html('')
+    $('#' + id).find('.hover-o').html('')
+  }
+}
+
 // for seeing choice with mouse hover
 const hoverOn = function () {
   if (over === false) {
@@ -83,7 +86,7 @@ const hoverOn = function () {
 }
 
 const hoverOff = function () {
-  $('.occupied').hide()
+  $('.occupied').hide() // clears the 'pick an empty space' message
   if (changeTurns() === 'x') {
     $(this).find('.hover-x').hide()
   } else if (changeTurns() === 'o') {
@@ -100,7 +103,7 @@ const gameOver = function () {
   }
   if (total === 9) {
     $('#feedback').html('Game is Over! It\'s a tie')
-    $('#left-feedback').append($('#create-game'))
+    $('#left-feedback').html($('#create-game'))
     console.log(store.game)
     over = true
   }
@@ -204,6 +207,11 @@ const onChangePw = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
+const reset = function () {
+  $('.hover-x').html('X')
+  $('.hover-o').html('O')
+}
+
 const onCreateGame = function (event) {
   event.preventDefault()
   over = false
@@ -213,7 +221,9 @@ const onCreateGame = function (event) {
   api.createGame()
     .then(ui.createGameSuccess)
     .then(gameState())
+    .then(reset())
 }
+
 // this was before I knew about adding data to html elements!
 // const upLeft = 0
 // const upCent = 1

@@ -2,7 +2,6 @@ TO DO:
 
   REQUIREMENTS:
   Do not allow users to add an X or O to any spaces after the game is over
-  GAME UPDATE OVER === TRUE WHEN GAME IS OVER!
 
 
   I rendered game when showing by ID. need to make it non-interactive
@@ -18,7 +17,7 @@ fix x and o elements so they fit within containers at smaller screen sizes
   have to take new screenshots for the images to match. So I definitely shouldn't delete the text code I have!
 
 
-
+create game button doesn't come back when second game is over
 
 ok. game frozen when won/over. now:
 
