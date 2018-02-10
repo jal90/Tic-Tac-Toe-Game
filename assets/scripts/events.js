@@ -4,7 +4,7 @@ const ui = require('./ui')
 const store = require('./store')
 
 let over = false
-let clicked = false
+let clicked = false // linter is wrong - this changes to true when square is clicked so hover stuff doesn't pop up
 
 const gameBoard = {
   upLeft: '',
@@ -86,7 +86,8 @@ const hoverOn = function () {
 }
 
 const hoverOff = function () {
-  $('.occupied').hide() // clears the 'pick an empty space' message
+  $('.occupied').hide()
+  $('#feedback').html('Game id#: ' + store.game.id)
   if (changeTurns() === 'x') {
     $(this).find('.hover-x').hide()
   } else if (changeTurns() === 'o') {
@@ -94,19 +95,20 @@ const hoverOff = function () {
   }
 }
 
+// checks that board is full and game is over
 const gameOver = function () {
   let total = 0
-  for (const key in gameBoard) {
-    if (gameBoard[key] !== '') {
-      total++
-      console.log('total is ', total)
+  if (over === false) { // this makes sure if someone wins on the last move (which sets over to true) then they won't simultaneously get a game-over message
+    for (const key in gameBoard) {
+      if (gameBoard[key] !== '') {
+        total++
+      }
     }
-  }
-  if (total === 9) {
-    $('#left-feedback').append($('#create-game'))
-    over = true
-    gameData.game.over = true
-    console.log('game data is ', gameData)
+    if (total === 9) {
+      over = true
+      gameData.game.over = true
+      $('.game-over-message').html('Game over! It\'s a tie')
+    }
   }
 }
 
@@ -124,55 +126,55 @@ const win = function () {
     if (gameBoard[key] !== '') {
       ++total
     }
-  }
+  } // TODO turn this crap below into a function that takes 3 parameters (squares) and does the same thing
   if (total >= 5) { // this is because it takes at least 5 turns total to win the game. So don't even bother checking before then
     if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
-      $('#feedback').html('X WINSSSSS')
+      $('.game-over-message').html('X WINSSSSS')
       gameWon()
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
-      $('#feedback').html('O WINSSSSS')
+      $('.game-over-message').html('O WINSSSSS')
       gameWon()
     } else if (gameBoard.midLeft === 'x' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
-      $('#feedback').html('X WINSSSSS')
+      $('.game-over-message').html('X WINSSSSS')
       gameWon()
     } else if (gameBoard.midLeft === 'o' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
-      $('#feedback').html('O WINSSSSS')
+      $('.game-over-message').html('O WINSSSSS')
       gameWon()
     } else if (gameBoard.botLeft === 'x' && gameBoard.botLeft === gameBoard.botCent && gameBoard.botLeft === gameBoard.botRight) {
-      $('#feedback').html('X WINSSSSS')
+      $('.game-over-message').html('X WINSSSSS')
       gameWon()
     } else if (gameBoard.botLeft === 'o' && gameBoard.botLeft === gameBoard.botCent && gameBoard.botLeft === gameBoard.botRight) {
-      $('#feedback').html('O WINSSSSS')
+      $('.game-over-message').html('O WINSSSSS')
       gameWon()
     } else if (gameBoard.botLeft === 'x' && gameBoard.botLeft === gameBoard.midCent && gameBoard.botLeft === gameBoard.upRight) {
-      $('#feedback').html('X WINSSSSS')
+      $('.game-over-message').html('X WINSSSSS')
       gameWon()
     } else if (gameBoard.botLeft === 'o' && gameBoard.botLeft === gameBoard.midCent && gameBoard.botLeft === gameBoard.upRight) {
-      $('#feedback').html('O WINSSSSS')
+      $('.game-over-message').html('O WINSSSSS')
       gameWon()
     } else if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.midCent && gameBoard.upLeft === gameBoard.botRight) {
-      $('#feedback').html('X WINSSSSS')
+      $('.game-over-message').html('X WINSSSSS')
       gameWon()
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.midCent && gameBoard.upLeft === gameBoard.botRight) {
-      $('#feedback').html('O WINSSSSS')
+      $('.game-over-message').html('O WINSSSSS')
       gameWon()
     } else if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.midLeft && gameBoard.midLeft === gameBoard.botLeft) {
-      $('#feedback').html('X WINSSSSS')
+      $('.game-over-message').html('X WINSSSSS')
       gameWon()
     } else if (gameBoard.midLeft === 'o' && gameBoard.upLeft === gameBoard.midLeft && gameBoard.midLeft === gameBoard.botLeft) {
-      $('#feedback').html('O WINSSSSS')
+      $('.game-over-message').html('O WINSSSSS')
       gameWon()
     } else if (gameBoard.upCent === 'x' && gameBoard.upCent === gameBoard.midCent && gameBoard.midCent === gameBoard.botCent) {
-      $('#feedback').html('X WINSSSSS')
+      $('.game-over-message').html('X WINSSSSS')
       gameWon()
     } else if (gameBoard.upCent === 'o' && gameBoard.upCent === gameBoard.midCent && gameBoard.midCent === gameBoard.botCent) {
-      $('#feedback').html('O WINSSSSS')
+      $('.game-over-message').html('O WINSSSSS')
       gameWon()
     } else if (gameBoard.upRight === 'x' && gameBoard.upRight === gameBoard.midRight && gameBoard.midRight === gameBoard.botRight) {
-      $('#feedback').html('X WINSSSSS')
+      $('.game-over-message').html('X WINSSSSS')
       gameWon()
     } else if (gameBoard.upRight === 'o' && gameBoard.upRight === gameBoard.midRight && gameBoard.midRight === gameBoard.botRight) {
-      $('#feedback').html('O WINSSSSS')
+      $('.game-over-message').html('O WINSSSSS')
       gameWon()
     }
   }
@@ -281,13 +283,14 @@ const boardHandlers = () => {
     .on('click', function () { updateObject($(this).attr('id')) })
     .on('click', function () { move($(this).attr('id')) })
     .on('click', onUpdateGame)
-    .on('click', gameOver)
     .on('click', win)
+    .on('click', gameOver)
 }
 
 const optionsState = function () {
   $('#options-state').show()
   $('.intro').hide()
+  $('#game-state').hide()
 }
 
 const gameState = function () {

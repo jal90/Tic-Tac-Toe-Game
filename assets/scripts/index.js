@@ -25,5 +25,6 @@ $(() => {
   $('#show-game').on('submit', events.onShowGame)
   $('#get-games').on('submit', events.onGetGames)
   $('#onward').on('click', events.optionsState)
+  $('.back-to-options').on('click', events.optionsState)
   $('#return-to-title').on('click', events.introState)
 })
