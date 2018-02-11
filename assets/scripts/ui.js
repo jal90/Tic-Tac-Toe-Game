@@ -8,10 +8,9 @@ const signUpSuccess = function (data) {
   $('#sign-up').hide()
 }
 
-const signUpFailure = function (error) {
+const signUpFailure = function () {
   $('#onward').hide()
   $('.sign-up-error').show()
-  console.error(error)
 }
 
 const signInSuccess = function (data) {
@@ -29,10 +28,9 @@ const signInSuccess = function (data) {
   // $('h1').hide()
 }
 
-const signInFailure = function (error) {
+const signInFailure = function () {
   $('#onward').hide()
   $('.sign-in-error').show()
-  console.error(error)
 }
 
 const signOutSuccess = function (data) {
@@ -47,10 +45,9 @@ const changePasswordSuccess = function (data) {
   console.log('changed password successfully')
 }
 
-const changePasswordFailure = function (error) {
+const changePasswordFailure = function () {
   $('#change-pw').text('Error on changing password')
   $('#change-pw').css('background-color', 'red')
-  console.error(error)
 }
 
 const createGameSuccess = function (data) {
@@ -72,6 +69,7 @@ const showGameSuccess = function (data) {
   $('#game-state').show()
   $('#options-state').hide()
   $('#hover-x').remove()
+
   if (store.game.cells[0] === 'x') {
     $('#upLeft').find('.x').show() // this is a stand-in for events.showX since that wasn't working
   } else if (store.game.cells[0] === 'o') {

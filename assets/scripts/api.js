@@ -23,7 +23,7 @@ const signIn = function (data) {
   })
 }
 
-const signOut = function () { // (data) doesn't need to be passed in
+const signOut = function () {
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,
     method: 'DELETE',
@@ -31,7 +31,6 @@ const signOut = function () { // (data) doesn't need to be passed in
       contentType: 'application/json',
       Authorization: 'Token token=' + store.user.token
     }
-    // data (unnessary)
   })
 }
 

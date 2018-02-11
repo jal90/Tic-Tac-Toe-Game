@@ -64,10 +64,9 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: none;
 }
 
-
-
 body {
   background-color: pink;
+  // background: url('../images/background');
   font-family: cursive;
 }
 
@@ -85,6 +84,21 @@ h1 {
 .sign-in-message {
   display: none;
   background-color: pink;
+}
+
+.btn-primary {
+  background-color: #c3c6c2;
+  color: black;
+  border: solid black 2px;
+  font-size: 1.5em;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active, {
+  background-color: #303030;
+  border-color: #303030;
 }
 
 .sign-up-message {

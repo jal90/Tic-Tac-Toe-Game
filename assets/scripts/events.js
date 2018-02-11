@@ -126,7 +126,7 @@ const win = function () {
     if (gameBoard[key] !== '') {
       ++total
     }
-  } // TODO turn this crap below into a function that takes 3 parameters (squares) and does the same thing
+  }
   if (total >= 5) { // this is because it takes at least 5 turns total to win the game. So don't even bother checking before then
     if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('.game-over-message').html('X WINSSSSS')
@@ -305,6 +305,7 @@ const introState = function () {
   $('#sign-in').show()
   $('#sign-up').show()
   $('.sign-in-message').hide()
+  $('#onward').hide()
   document.getElementById('sign-in').reset()
   document.getElementById('sign-up').reset()
 }
