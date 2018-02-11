@@ -2,10 +2,10 @@ const store = require('./store')
 const events = require('./events')
 
 const signUpSuccess = function (data) {
-  $('#sign-up').text('Signed up successfully, now please sign in')
-  $('#sign-up').css('background-color', 'green')
+  $('.sign-up-message').show()
   $('.sign-up-error').hide()
   $('.sign-in-error').hide()
+  $('#sign-up').hide()
 }
 
 const signUpFailure = function (error) {
@@ -16,10 +16,11 @@ const signUpFailure = function (error) {
 
 const signInSuccess = function (data) {
   console.log(data)
-  $('#sign-in').text('Signed in successfully')
-  $('#sign-in').css('background-color', 'green')
+  $('.sign-in-message').show()
+  $('.sign-up-message').hide()
   $('.sign-in-error').hide()
   $('.sign-up-error').hide()
+  $('#sign-in').hide()
   $('#sign-up').hide()
   $('#onward').show()
   store.user = data.user
@@ -120,6 +121,7 @@ const showGameSuccess = function (data) {
 
 const getGamesSuccess = function (data) {
   console.log('games ARE ', data.games)
+  $('#games-length').html('You\'ve played ' + data.games.length + ' games')
 }
 
 module.exports = {

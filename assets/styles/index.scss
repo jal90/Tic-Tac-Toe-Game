@@ -73,11 +73,28 @@ body {
 
 h1 {
   font-size: 300%;
-  margin-bottom: 5%;
+  margin-bottom: 7%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid black 3px;
+  border-radius: 10px;
+  max-width: 600px;
+  padding: 10px;
+}
+
+.sign-in-message {
+  display: none;
+  background-color: pink;
+}
+
+.sign-up-message {
+  display: none;
+  background-color: pink;
 }
 
 p {
   margin-bottom: 5%;
+  font-size: 1.5em;
 }
 
 .intro {
@@ -106,13 +123,15 @@ p {
 }
 
 .sign-up-error {
+  text-align: center;
   display: none;
-  background-color: red;
+  background-color: orange;
 }
 
 .sign-in-error {
+  text-align: center;
   display: none;
-  background-color: red;
+  background-color: orange;
 }
 
 form {

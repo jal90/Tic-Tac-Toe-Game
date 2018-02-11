@@ -288,18 +288,25 @@ const boardHandlers = () => {
 }
 
 const optionsState = function () {
-  $('#options-state').show()
-  $('.intro').hide()
-  $('#game-state').hide()
+  $('#options-state').show() // shows options page
+  $('.intro').hide() // hides intro page
+  $('#game-state').hide() // hides game page
 }
 
 const gameState = function () {
-  $('#game-state').show()
-  $('#options-state').hide()
+  $('#game-state').show() // shows game board
+  $('#options-state').hide() // hides options 'page'
+  $('#games-length').html('') // clears 'you've played x games'
 }
 
-const introState = function () { // need to not refresh the page! without refreshing, find another way to reset forms
-  window.location.reload()
+const introState = function () {
+  $('.intro').show()
+  $('#sign-out-state').hide()
+  $('#sign-in').show()
+  $('#sign-up').show()
+  $('.sign-in-message').hide()
+  document.getElementById('sign-in').reset()
+  document.getElementById('sign-up').reset()
 }
 
 module.exports = {
