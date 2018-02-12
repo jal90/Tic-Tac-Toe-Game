@@ -1,11 +1,18 @@
 Planning:
 The project started with some wireframes (https://imgur.com/a/xuzZJ) and user stories:
+
   I want to see my seletion on the game board as soon as I make it
+
   I want to see my opponent's selection as soon as they make it
+
   I want to see my game's history, how many I've won, lost, and tied
+
   I want to be able to log in and log out easily
+
   I want to see a nice message when the game is over
+
   I want to easily be able to start a new game once a game is over
+  
 
 When I started the development process, the first thing I worked on was presenting
 the game board in a pleasing way and coding game logic. Satisfying the first two user stories

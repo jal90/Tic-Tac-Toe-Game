@@ -114,6 +114,7 @@
         <legend>Look up a previous game by id#</legend>
         <input name="game[id]" type="text" placeholder="game id here">
         <input type="submit" value="See game">
+        <div id="show-game-failure">Please enter a valid game ID</div>
       </fieldset>
     </form>
 
@@ -121,6 +122,9 @@
       <fieldset>
         <legend> See how many games you've played </legend>
         <input type="submit" value="See number">
+        <div id="x-won"></div>
+        <div id="o-won"></div>
+        <div id="ties"></div>
         <div id="games-length"></div>
       </fieldset>
     </form>

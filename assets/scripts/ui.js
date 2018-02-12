@@ -117,6 +117,9 @@ const showGameSuccess = function (data) {
   }
 }
 
+const showGameFailure = function () {
+  $('#show-game-failure').show()
+}
 const getGamesSuccess = function (data) {
   console.log('games ARE ', data.games)
   $('#games-length').html('You\'ve played ' + data.games.length + ' games')
@@ -132,5 +135,6 @@ module.exports = {
   changePasswordFailure,
   createGameSuccess,
   showGameSuccess,
+  showGameFailure,
   getGamesSuccess
 }

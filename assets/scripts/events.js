@@ -95,6 +95,10 @@ const hoverOff = function () {
   }
 }
 
+// let xWin = 0 // using store instead
+// let oWin = 0
+// let ties = 0
+
 // checks that board is full and game is over
 const gameOver = function () {
   let total = 0
@@ -108,6 +112,7 @@ const gameOver = function () {
       over = true
       gameData.game.over = true
       $('.game-over-message').html('Game over! It\'s a tie')
+      store.ties += 1
     }
   }
 }
@@ -131,51 +136,68 @@ const win = function () {
     if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('.game-over-message').html('X WINSSSSS')
       gameWon()
+      store.xWin += 1
+      console.log('xWin IS ', store.xWin)// for adding to total won stats
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('.game-over-message').html('O WINSSSSS')
       gameWon()
+      store.oWin += 1
     } else if (gameBoard.midLeft === 'x' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
       $('.game-over-message').html('X WINSSSSS')
       gameWon()
+      store.xWin += 1
     } else if (gameBoard.midLeft === 'o' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
       $('.game-over-message').html('O WINSSSSS')
       gameWon()
+      store.oWin += 1
     } else if (gameBoard.botLeft === 'x' && gameBoard.botLeft === gameBoard.botCent && gameBoard.botLeft === gameBoard.botRight) {
       $('.game-over-message').html('X WINSSSSS')
       gameWon()
+      store.xWin += 1
     } else if (gameBoard.botLeft === 'o' && gameBoard.botLeft === gameBoard.botCent && gameBoard.botLeft === gameBoard.botRight) {
       $('.game-over-message').html('O WINSSSSS')
       gameWon()
+      store.oWin += 1
     } else if (gameBoard.botLeft === 'x' && gameBoard.botLeft === gameBoard.midCent && gameBoard.botLeft === gameBoard.upRight) {
       $('.game-over-message').html('X WINSSSSS')
       gameWon()
+      store.xWin += 1
     } else if (gameBoard.botLeft === 'o' && gameBoard.botLeft === gameBoard.midCent && gameBoard.botLeft === gameBoard.upRight) {
       $('.game-over-message').html('O WINSSSSS')
       gameWon()
+      store.oWin += 1
     } else if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.midCent && gameBoard.upLeft === gameBoard.botRight) {
       $('.game-over-message').html('X WINSSSSS')
       gameWon()
+      store.xWin += 1
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.midCent && gameBoard.upLeft === gameBoard.botRight) {
       $('.game-over-message').html('O WINSSSSS')
       gameWon()
+      store.oWin += 1
     } else if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.midLeft && gameBoard.midLeft === gameBoard.botLeft) {
       $('.game-over-message').html('X WINSSSSS')
       gameWon()
+      store.xWin += 1
     } else if (gameBoard.midLeft === 'o' && gameBoard.upLeft === gameBoard.midLeft && gameBoard.midLeft === gameBoard.botLeft) {
       $('.game-over-message').html('O WINSSSSS')
       gameWon()
+      store.oWin += 1
     } else if (gameBoard.upCent === 'x' && gameBoard.upCent === gameBoard.midCent && gameBoard.midCent === gameBoard.botCent) {
       $('.game-over-message').html('X WINSSSSS')
       gameWon()
+      store.xWin += 1
     } else if (gameBoard.upCent === 'o' && gameBoard.upCent === gameBoard.midCent && gameBoard.midCent === gameBoard.botCent) {
       $('.game-over-message').html('O WINSSSSS')
       gameWon()
+      store.oWin += 1
     } else if (gameBoard.upRight === 'x' && gameBoard.upRight === gameBoard.midRight && gameBoard.midRight === gameBoard.botRight) {
       $('.game-over-message').html('X WINSSSSS')
       gameWon()
+      store.xWin += 1
     } else if (gameBoard.upRight === 'o' && gameBoard.upRight === gameBoard.midRight && gameBoard.midRight === gameBoard.botRight) {
       $('.game-over-message').html('O WINSSSSS')
       gameWon()
+      store.oWin += 1
     }
   }
 }
@@ -270,13 +292,19 @@ const onShowGame = function (event) {
   const game = data.game
   api.showGame(game.id)
     .then(ui.showGameSuccess)
+    .catch(ui.showGameFailure)
 }
 
 const onGetGames = function (event) {
   event.preventDefault()
+  // console.log('in onGetGames, xWin is ' + store.xWin)
+  // $('#x-won').html('X has won ' + store.xWin + ' games')
+  // $('#o-won').html('O has won ' + store.oWin + ' games')
+  // $('#ties').html('You\'ve tied ' + store.ties + ' games')
   api.getGames()
     .then(ui.getGamesSuccess)
 }
+
 const boardHandlers = () => {
   $('.col-xs-4')
     .hover(hoverOn, hoverOff)
@@ -291,6 +319,8 @@ const optionsState = function () {
   $('#options-state').show() // shows options page
   $('.intro').hide() // hides intro page
   $('#game-state').hide() // hides game page
+  $('#show-game-failure').hide()
+  document.getElementById('get-games').reset()
 }
 
 const gameState = function () {
