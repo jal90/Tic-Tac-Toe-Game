@@ -46,7 +46,7 @@ const move = function (id) {
       }
       gameBoard[id] = changeTurns()
     } else {
-      $('.occupied').show()
+      $('.occupied').show().fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     }
     // console.log(gameBoard)
   }
@@ -130,52 +130,100 @@ const win = function () {
   if (total >= 5) { // this is because it takes at least 5 turns total to win the game. So don't even bother checking before then
     if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('.game-over-message').html('X WINS')
+      $('#upLeft').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#upCent').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#upRight').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
       gameWon()
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.upCent && gameBoard.upLeft === gameBoard.upRight) {
       $('.game-over-message').html('O WINS')
+      $('#upLeft').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#upCent').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#upRight').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
       gameWon()
     } else if (gameBoard.midLeft === 'x' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
       $('.game-over-message').html('X WINS')
       gameWon()
+      $('#midLeft').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midCent').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midRight').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.midLeft === 'o' && gameBoard.midLeft === gameBoard.midCent && gameBoard.midLeft === gameBoard.midRight) {
       $('.game-over-message').html('O WINS')
       gameWon()
+      $('#midLeft').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midCent').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midRight').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.botLeft === 'x' && gameBoard.botLeft === gameBoard.botCent && gameBoard.botLeft === gameBoard.botRight) {
       $('.game-over-message').html('X WINS')
       gameWon()
+      $('#botLeft').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botCent').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botRight').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.botLeft === 'o' && gameBoard.botLeft === gameBoard.botCent && gameBoard.botLeft === gameBoard.botRight) {
       $('.game-over-message').html('O WINS')
       gameWon()
+      $('#botLeft').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botCent').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botRight').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.botLeft === 'x' && gameBoard.botLeft === gameBoard.midCent && gameBoard.botLeft === gameBoard.upRight) {
       $('.game-over-message').html('X WINS')
       gameWon()
+      $('#botLeft').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midCent').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#upRight').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.botLeft === 'o' && gameBoard.botLeft === gameBoard.midCent && gameBoard.botLeft === gameBoard.upRight) {
       $('.game-over-message').html('O WINS')
       gameWon()
+      $('#botLeft').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midCent').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#upRight').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.midCent && gameBoard.upLeft === gameBoard.botRight) {
       $('.game-over-message').html('X WINS')
       gameWon()
+      $('#upLeft').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midCent').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botRight').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.upLeft === 'o' && gameBoard.upLeft === gameBoard.midCent && gameBoard.upLeft === gameBoard.botRight) {
       $('.game-over-message').html('O WINS')
       gameWon()
+      $('#upLeft').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midCent').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botRight').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.upLeft === 'x' && gameBoard.upLeft === gameBoard.midLeft && gameBoard.midLeft === gameBoard.botLeft) {
       $('.game-over-message').html('X WINS')
       gameWon()
+      $('#upLeft').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midLeft').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botLeft').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.midLeft === 'o' && gameBoard.upLeft === gameBoard.midLeft && gameBoard.midLeft === gameBoard.botLeft) {
       $('.game-over-message').html('O WINS')
       gameWon()
+      $('#upLeft').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midLeft').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botLeft').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.upCent === 'x' && gameBoard.upCent === gameBoard.midCent && gameBoard.midCent === gameBoard.botCent) {
       $('.game-over-message').html('X WINS')
       gameWon()
+      $('#upCent').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midCent').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botCent').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.upCent === 'o' && gameBoard.upCent === gameBoard.midCent && gameBoard.midCent === gameBoard.botCent) {
       $('.game-over-message').html('O WINS')
       gameWon()
+      $('#upCent').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midCent').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botCent').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.upRight === 'x' && gameBoard.upRight === gameBoard.midRight && gameBoard.midRight === gameBoard.botRight) {
       $('.game-over-message').html('X WINS')
       gameWon()
+      $('#upRight').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midRight').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botRight').children('.x').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     } else if (gameBoard.upRight === 'o' && gameBoard.upRight === gameBoard.midRight && gameBoard.midRight === gameBoard.botRight) {
       $('.game-over-message').html('O WINS')
       gameWon()
+      $('#upRight').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#midRight').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+      $('#botRight').children('.o').fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
     }
   }
 }

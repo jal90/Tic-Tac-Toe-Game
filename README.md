@@ -54,7 +54,4 @@ Javascript, Jquery, AJAX, HTML, CSS, SASS, git, gitHub, grunt.
 
 Still to do:
 
-
-Multiplayer functionality (on different devices) is also something I'd like to attempt.
-
-Adding some stats like games won and lost and tied (currently only show number of games played)
+Multiplayer functionality (on different devices) is something I'd like to attempt at some point.

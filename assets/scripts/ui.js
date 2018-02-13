@@ -36,6 +36,7 @@ const signOutSuccess = function (data) {
   $('#options-state').hide()
   $('#sign-out-state').show()
   console.log('signed out successfully')
+  document.getElementById('show-game').reset()
 }
 
 const changePasswordSuccess = function (data) {
@@ -133,10 +134,21 @@ const getGamesSuccess = function (data) {
       if (totalX - totalO === 0) {
         oWins += 1
       }
-      console.log('at game #' + i + ' oWins is ' + oWins) // BUG
+      console.log('at game #' + i + ' oWins is ' + oWins)
+    }
+    // accounting for singular/ plural "time(s)"
+    if (data.games.length === 1) {
+      if (oWins === 1) {
+        $('#games-length').html('You\'ve played ' + data.games.length + ' game, and have been defeated ' + oWins + ' time. Keep at it')
+      } else {
+        $('#games-length').html('You\'ve played ' + data.games.length + ' game, and have been defeated ' + oWins + ' times. Keep at it')
+      }
+    } else if (oWins === 1) {
+      $('#games-length').html('You\'ve played ' + data.games.length + ' games, and have been defeated ' + oWins + ' time. Keep at it')
+    } else {
+      $('#games-length').html('You\'ve played ' + data.games.length + ' games, and have been defeated ' + oWins + ' times. Keep at it')
     }
   }
-  $('#games-length').html('You\'ve played ' + data.games.length + ' games, and been defeated ' + oWins + ' times. Keep at it')
 }
 
 module.exports = {
