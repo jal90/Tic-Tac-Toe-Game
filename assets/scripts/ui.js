@@ -39,14 +39,13 @@ const signOutSuccess = function (data) {
 }
 
 const changePasswordSuccess = function (data) {
-  $('#change-pw').text('Changed password successfully')
-  $('#change-pw').css('background-color', 'green')
+  $('.success-message').show()
+  $('#change-pw').hide()
   console.log('changed password successfully')
 }
 
 const changePasswordFailure = function () {
-  $('#change-pw').text('Error on changing password')
-  $('#change-pw').css('background-color', 'red')
+  $('.error-message').show()
 }
 
 const createGameSuccess = function (data) {
@@ -137,7 +136,7 @@ const getGamesSuccess = function (data) {
       console.log('at game #' + i + ' oWins is ' + oWins) // BUG
     }
   }
-  $('#games-length').html('You\'ve played ' + data.games.length + ' games, and you have been defeated ' + oWins + ' times. Keep at it')
+  $('#games-length').html('You\'ve played ' + data.games.length + ' games, and been defeated ' + oWins + ' times. Keep at it')
 }
 
 module.exports = {

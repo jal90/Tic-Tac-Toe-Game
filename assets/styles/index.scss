@@ -4,12 +4,22 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .game-container {
   display: none;
-  width: 90%; // this effects height as well
+  width: 88.5%; // this effects height as well
   margin: auto; // this centers it left-right, but keeps it pinned to top
 
   // position: absolute; // these 3 lines will center board in screen at smaller sizes! comes with a couple bugs tho
   // top: 50%;
   // transform: translateY(-50%);
+}
+
+.success-message {
+  display: none;
+  background-color: teal;
+}
+
+.error-message {
+  display: none;
+  background-color: orange;
 }
 
 .top {
@@ -80,6 +90,7 @@ body {
   background-color: pink;
   // background: img src=“/assets/imgs/image.png”;
   font-family: cursive;
+  max-height: 99%;
 }
 
 h1 {

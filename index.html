@@ -135,8 +135,11 @@
         <input name="passwords[old]" type="password" placeholder="current password">
         <input name="passwords[new]" type="password" placeholder="new password">
         <input type="submit" value="Change password">
+        <div class="error-message">Problem changing password</div>
       </fieldset>
     </form>
+    <div class="success-message">Changed password successfully</div>
+
 
 
   </div>
@@ -147,7 +150,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

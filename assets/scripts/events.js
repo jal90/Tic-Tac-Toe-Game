@@ -294,7 +294,11 @@ const optionsState = function () {
   $('.intro').hide() // hides intro page
   $('#game-state').hide() // hides game page
   $('#show-game-failure').hide()
+  $('#change-pw').show()
+  $('.success-message').hide()
+  $('.error-message').hide()
   document.getElementById('get-games').reset()
+  document.getElementById('change-pw').reset()
 }
 
 const gameState = function () {
