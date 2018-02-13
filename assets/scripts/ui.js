@@ -14,7 +14,6 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (data) {
-  console.log(data)
   $('.sign-in-message').show()
   $('.sign-up-message').hide()
   $('.sign-in-error').hide()
@@ -58,14 +57,12 @@ const createGameSuccess = function (data) {
   $('.game-over-message').html('')
   $('.col-xs-4').children().hide()
   events.over = false
-  console.log(events.over)
 }
 
 const showGameSuccess = function (data) {
   store.game = data.game
   console.log('store.game is ', store.game)
   console.log('data.game.id is ', data.game.id)
-  console.log('INSIDE showGameSuccess store.game.cells is ', store.game.cells[0])
   $('#game-state').show()
   $('#options-state').hide()
   $('#hover-x').remove()
@@ -121,8 +118,26 @@ const showGameFailure = function () {
   $('#show-game-failure').show()
 }
 const getGamesSuccess = function (data) {
+  let oWins = 0
   console.log('games ARE ', data.games)
-  $('#games-length').html('You\'ve played ' + data.games.length + ' games')
+  for (let i = 0; i < data.games.length; i++) {
+    if (data.games[i].over === true) {
+      let totalX = 0
+      let totalO = 0
+      for (let j = 0; j < data.games[i].cells.length; j++) {
+        if (data.games[i].cells[j] === 'x') {
+          totalX += 1
+        } else if (data.games[i].cells[j] === 'o') {
+          totalO += 1
+        }
+      }
+      if (totalX - totalO === 0) {
+        oWins += 1
+      }
+      console.log('at game #' + i + ' oWins is ' + oWins) // BUG
+    }
+  }
+  $('#games-length').html('You\'ve played ' + data.games.length + ' games, and you have been defeated ' + oWins + ' times. Keep at it')
 }
 
 module.exports = {

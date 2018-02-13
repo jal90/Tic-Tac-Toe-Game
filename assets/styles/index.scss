@@ -6,6 +6,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: none;
   width: 90%; // this effects height as well
   margin: auto; // this centers it left-right, but keeps it pinned to top
+
+  // position: absolute; // these 3 lines will center board in screen at smaller sizes! comes with a couple bugs tho
+  // top: 50%;
+  // transform: translateY(-50%);
 }
 
 .top {
@@ -30,12 +34,14 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   text-align: center;
   font-size: 12vw;
   display: none;
+  user-select: none;
 }
 
 .o {
   text-align: center;
   font-size: 12vw;
   display: none;
+  user-select: none;
 }
 
 .hover-x {
@@ -43,6 +49,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   font-size: 12vw;
   opacity: 0.5;
   display: none;
+  user-select: none;
 }
 
 .hover-o {
@@ -50,6 +57,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   font-size: 12vw;
   opacity: 0.5;
   display: none;
+  user-select: none;
 }
 
 .win-x {
@@ -64,9 +72,13 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: none;
 }
 
+html {
+  min-height: 100%; // this is here because HTML was stopping halfway down the page when the page was narrow. No idea why!
+}
+
 body {
   background-color: pink;
-  // background: url('../images/background');
+  // background: img src=“/assets/imgs/image.png”;
   font-family: cursive;
 }
 
@@ -154,9 +166,9 @@ form {
 
 .occupied {
   display: none;
-  font-size: 3em;
+  font-size: 3vw;
 }
 
 .game-over-message {
-  font-size: 2em;
+  font-size: 2.5vw;
 }

@@ -12,7 +12,7 @@ The project started with some wireframes (https://imgur.com/a/xuzZJ) and user st
   I want to see a nice message when the game is over
 
   I want to easily be able to start a new game once a game is over
-  
+
 
 When I started the development process, the first thing I worked on was presenting
 the game board in a pleasing way and coding game logic. Satisfying the first two user stories
@@ -41,16 +41,19 @@ of having messages pop up on the sides of the game board, so the view of the boa
 Finally, a few more tweaks to the UI was made, making the buttons bigger and changing the color of some messages
 and buttons, to give the app you see before you.
 
+I finally figured out how to make the text inside of the game squares responsive! Goes to show
+that one needs to be careful when taking advice online. The best solution for you may not be
+the 1st hit on Google or the most upvoted post on StackOverflow. Turns out it was as simple as
+changing the font-size from em to vw which stands for view-width. As the width of the screen
+gets smaller so does the text! Going from 12em to 12vw worked perfectly.
+
 
 Technologies used:
 Javascript, Jquery, AJAX, HTML, CSS, SASS, git, gitHub, grunt.
 
 
 Still to do:
-Fix x and o elements so they fit within containers of the game board at smaller screen sizes
-There's apparently no native way to do this with CSS, but there's a project called Fixtext that
-addresses the issue. I could also try using images of x and o (with the same-color background) and pass
-those in instead of text, since images may be easier to resize.
+
 
 Multiplayer functionality (on different devices) is also something I'd like to attempt.
 
