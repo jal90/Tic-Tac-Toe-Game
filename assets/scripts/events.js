@@ -291,7 +291,7 @@ const updateObject = function (id) {
   if (over === false) {
     gameData.game.cell.index = attr.dataset.cellIndex // index will be whichever square is clicked + !!!check that this is working properly
     gameData.game.cell.value = changeTurns() // value will be x or o
-    console.log('GAME DATA IS ', gameData)
+    // console.log('GAME DATA IS ', gameData)
   }
 }
 
@@ -308,7 +308,7 @@ const gameData = {
 const onUpdateGame = function (event) {
   event.preventDefault()
   api.updateGame(gameData)
-    .then(console.log('inside onUpdateGame gameData is ', gameData))
+    // .then(console.log('inside onUpdateGame gameData is ', gameData))
 }
 
 const onShowGame = function (event) {

@@ -37,14 +37,14 @@ const signOutSuccess = function (data) {
   $('#sign-out-state').show()
   $('.listids').hide()
   $('#games-length').html('')
-  console.log('signed out successfully')
+  // console.log('signed out successfully')
   document.getElementById('show-game').reset()
 }
 
 const changePasswordSuccess = function (data) {
   $('.success-message').show()
   $('#change-pw').hide()
-  console.log('changed password successfully')
+  // console.log('changed password successfully')
 }
 
 const changePasswordFailure = function () {
@@ -53,8 +53,8 @@ const changePasswordFailure = function () {
 
 const createGameSuccess = function (data) {
   store.game = data.game
-  console.log('store.game is ', store.game)
-  console.log('data.game is ', data.game)
+  // console.log('store.game is ', store.game)
+  // console.log('data.game is ', data.game)
   $('#feedback').html('Game id#: ' + store.game.id)
   $('.game-over-message').html('')
   $('.col-xs-4').children().hide()
@@ -63,8 +63,8 @@ const createGameSuccess = function (data) {
 
 const showGameSuccess = function (data) {
   store.game = data.game
-  console.log('store.game is ', store.game)
-  console.log('data.game.id is ', data.game.id)
+  // console.log('store.game is ', store.game)
+  // console.log('data.game.id is ', data.game.id)
   $('#game-state').show()
   $('#options-state').hide()
   $('#hover-x').remove()
@@ -124,7 +124,7 @@ const getGamesSuccess = function (data) {
   if (data.games.length === 0) {
     $('#games-length').html('You must test your mettle before seeing your stats')
   }
-  console.log('games ARE ', data.games)
+  // console.log('games ARE ', data.games)
   for (let i = 0; i < data.games.length; i++) {
     $('#id-list').append(data.games[i].id + ', ')
     $('.listids').show()
@@ -141,7 +141,7 @@ const getGamesSuccess = function (data) {
       if (totalX - totalO === 0) {
         oWins += 1
       }
-      console.log('at game #' + i + ' oWins is ' + oWins)
+      // console.log('at game #' + i + ' oWins is ' + oWins)
     }
     // accounting for singular/ plural "time(s)"
     if (data.games.length === 1) {
