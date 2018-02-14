@@ -35,6 +35,8 @@ const signInFailure = function () {
 const signOutSuccess = function (data) {
   $('#options-state').hide()
   $('#sign-out-state').show()
+  $('.listids').hide()
+  $('#games-length').html('')
   console.log('signed out successfully')
   document.getElementById('show-game').reset()
 }
@@ -119,8 +121,13 @@ const showGameFailure = function () {
 }
 const getGamesSuccess = function (data) {
   let oWins = 0
+  if (data.games.length === 0) {
+    $('#games-length').html('You must test your mettle before seeing your stats')
+  }
   console.log('games ARE ', data.games)
   for (let i = 0; i < data.games.length; i++) {
+    $('#id-list').append(data.games[i].id + ', ')
+    $('.listids').show()
     if (data.games[i].over === true) {
       let totalX = 0
       let totalO = 0

@@ -347,6 +347,8 @@ const optionsState = function () {
   $('.error-message').hide()
   document.getElementById('get-games').reset()
   document.getElementById('change-pw').reset()
+  $('.listids').hide()
+  $('#id-list').html('')
 }
 
 const gameState = function () {

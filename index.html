@@ -93,7 +93,7 @@
   <!-- OPTIONS-STATE -->
   <div id="options-state" class="options-state">
 
-    <h1> Forks in the road... </h1>
+    <h1> Choices... </h1>
     <form id="create-game">
       <fieldset>
         <legend> Start a game. No more stalling </legend>
@@ -120,12 +120,30 @@
 
     <form id="get-games">
       <fieldset>
-        <legend> See how many games you've played </legend>
+        <legend> See game stats </legend>
         <input type="submit" value="Are you a champion?">
         <div id="x-won"></div>
         <div id="o-won"></div>
         <div id="ties"></div>
-        <div id="games-length"></div>
+        <div id="games-length" class="games-length"></div>
+        <!-- Button trigger modal -->
+  <button type="button" class="listids" data-toggle="modal" data-target="#exampleModal">
+    List game id #s
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body" id="id-list">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
       </fieldset>
     </form>
 
