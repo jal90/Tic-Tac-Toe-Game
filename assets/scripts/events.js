@@ -308,16 +308,20 @@ const gameData = {
 const onUpdateGame = function (event) {
   event.preventDefault()
   api.updateGame(gameData)
-    // .then(console.log('inside onUpdateGame gameData is ', gameData))
+  // .then(console.log('inside onUpdateGame gameData is ', gameData))
 }
 
 const onShowGame = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   const game = data.game
-  api.showGame(game.id)
-    .then(ui.showGameSuccess)
+  console.log('data is ', data)
+  // if (game.id !== '') {
+    api.showGame(game.id)
+      .then(ui.showGameSuccess)
+  // } else {
     .catch(ui.showGameFailure)
+  // }
 }
 
 const onGetGames = function (event) {
@@ -346,7 +350,6 @@ const optionsState = function () {
   $('.success-message').hide()
   $('.error-message').hide()
   document.getElementById('get-games').reset()
-  document.getElementById('change-pw').reset()
   $('.listids').hide()
   $('#id-list').html('')
 }
@@ -364,8 +367,6 @@ const introState = function () {
   $('#sign-up').show()
   $('.sign-in-message').hide()
   $('#onward').hide()
-  document.getElementById('sign-in').reset()
-  document.getElementById('sign-up').reset()
 }
 
 module.exports = {

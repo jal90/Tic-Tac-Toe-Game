@@ -6,11 +6,13 @@ const signUpSuccess = function (data) {
   $('.sign-up-error').hide()
   $('.sign-in-error').hide()
   $('#sign-up').hide()
+  document.getElementById('sign-up').reset()
 }
 
 const signUpFailure = function () {
   $('#onward').hide()
   $('.sign-up-error').show()
+  document.getElementById('sign-up').reset()
 }
 
 const signInSuccess = function (data) {
@@ -21,6 +23,7 @@ const signInSuccess = function (data) {
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#onward').show()
+  document.getElementById('sign-in').reset()
   store.user = data.user
   // $('#game-state').show()
   // $('#ui-container').hide()
@@ -30,6 +33,7 @@ const signInSuccess = function (data) {
 const signInFailure = function () {
   $('#onward').hide()
   $('.sign-in-error').show()
+  document.getElementById('sign-in').reset()
 }
 
 const signOutSuccess = function (data) {
@@ -42,13 +46,16 @@ const signOutSuccess = function (data) {
 }
 
 const changePasswordSuccess = function (data) {
-  $('.success-message').show()
-  $('#change-pw').hide()
+  $('.success-message').show().fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+  $('.error-message').hide()
+  document.getElementById('change-pw').reset()
   // console.log('changed password successfully')
 }
 
 const changePasswordFailure = function () {
-  $('.error-message').show()
+  $('.error-message').show().fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
+  $('.success-message').hide()
+  document.getElementById('change-pw').reset()
 }
 
 const createGameSuccess = function (data) {
@@ -64,7 +71,7 @@ const createGameSuccess = function (data) {
 const showGameSuccess = function (data) {
   store.game = data.game
   // console.log('store.game is ', store.game)
-  // console.log('data.game.id is ', data.game.id)
+  console.log('data.game.id is ', data.game.id)
   $('#game-state').show()
   $('#options-state').hide()
   $('#hover-x').remove()
@@ -117,7 +124,7 @@ const showGameSuccess = function (data) {
 }
 
 const showGameFailure = function () {
-  $('#show-game-failure').show()
+  $('#show-game-failure').show().fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100)
 }
 const getGamesSuccess = function (data) {
   let oWins = 0
