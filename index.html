@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tickity Tackity Toe</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid border-image">
+
+  <div class="intro">
+    <h1>Tickity Tackity Toe</h1>
+    <p>Great adventurer, you've stumbled upon Tickity Tackity Toe, the world's greatest game</p>
+    <p>Choose your opponent wisely, for in this game, the score is final</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#auth-modal" id="venture-forth">
+    Venture forth!
+  </button>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="auth-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          <h3 class="modal-title" id="exampleModalLabel">Welcome, friend!</h3>
+          <h4> This is a slight formality you must complete to pass </h4>
+
+          <div class="row">
+            <div class="col-xs-6">
+              <h3> Sign-up</h3>
+            </div>
+            <div class="col-xs-6">
+              <h3> Sign-in</h3>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-6">
+              <form id="sign-up" class="sign-up">
+                <input name="credentials[email]" type="text" placeholder="an@example.email">
+                <input name="credentials[password]" type="password" placeholder="an example password">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <input type="submit" value="Sign Up!">
+                  </div>
+                </div>
+              </form>
+              <div class="sign-up-message">
+                Signed up successfully, now please sign in
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <form id="sign-in">
+                <input name="credentials[email]" type="text" placeholder="an@example.email">
+                <input name="credentials[password]" type="password" placeholder="an example password">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <input type="submit" value="Sign In!">
+                  </div>
+
+                </div>
+              </form>
+              <div class="sign-in-message">
+                Signed in successfully
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="sign-up-error">problem signing up, try again </div>
+          <div class="sign-in-error">problem signing in, try again </div>
+          <button type="button" class="btn btn-primary onward" data-dismiss="modal" id="onward">Onward!</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTIONS-STATE -->
+  <div id="options-state" class="options-state">
+
+    <h1> Choices... </h1>
+    <form id="create-game">
+      <fieldset>
+        <legend> Start a game. No more stalling </legend>
+        <input type="submit" value="Start New Game">
+      </fieldset>
+    </form>
+
+
+    <form id="sign-out">
+      <fieldset>
+        <legend>Sign out and leave this place</legend>
+        <input type="submit" value="Sign Out">
+      </fieldset>
+    </form>
+
+    <form id="show-game">
+      <fieldset>
+        <legend>Look up a previous game by id#</legend>
+        <input name="game[id]" type="text" placeholder="game id here">
+        <input type="submit" value="See game">
+        <div id="show-game-failure">Please enter a valid game ID</div>
+      </fieldset>
+    </form>
+
+    <form id="get-games">
+      <fieldset>
+        <legend> See game stats </legend>
+        <input type="submit" value="Are you a champion?">
+        <div id="x-won"></div>
+        <div id="o-won"></div>
+        <div id="ties"></div>
+        <div id="games-length" class="games-length"></div>
+        <!-- Button trigger modal -->
+  <button type="button" class="listids" data-toggle="modal" data-target="#exampleModal">
+    List game id #s
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body" id="id-list">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+      </fieldset>
+    </form>
+
+    <form id="change-pw">
+      <fieldset>
+        <legend> Change your password</legend>
+        <input name="passwords[old]" type="password" placeholder="current password">
+        <input name="passwords[new]" type="password" placeholder="new password">
+        <input type="submit" value="Change password">
+        <div class="error-message">Problem changing password</div>
+        <div class="success-message">Changed password successfully</div>
+      </fieldset>
+    </form>
+
+
+
+
+  </div>
+
+
+  <!-- SIGN OUT STATE -->
+  <div class="modal" tabindex="-1" role="dialog" id="sign-out-state">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <p>Signed out successfully</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="return-to-title">Return to title</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME STATE -->
+  <div id="game-state" class="game-container">
+
+    <div class="row">
+      <div class="col-xs-2" id="left-feedback">
+        <input type="submit" value="Start New Game" class="create-game">
+        <input type="submit" value="Options" class="back-to-options">
+      </div>
+      <div class="col-xs-8">
+        <div class="row top">
+          <div class="col-xs-4" id="upLeft" data-cell-index='0'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+          <div class="col-xs-4 cent" id="upCent" data-cell-index='1'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+          <div class="col-xs-4" id="upRight" data-cell-index='2'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-2" id="feedback"></div>
+      <!-- right column, where feedback lives -->
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="occupied">PLEASE PICK EMPTY SPACE</div>
+      </div>
+      <div class="col-xs-8">
+        <div class="row mid">
+          <div class="col-xs-4" id="midLeft" data-cell-index='3'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+          <div class="col-xs-4 cent" id="midCent" data-cell-index='4'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+          <div class="col-xs-4" id="midRight" data-cell-index='5'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="game-over-message"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8">
+        <div class="row bottom">
+          <div class="col-xs-4" id="botLeft" data-cell-index='6'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+          <div class="col-xs-4 cent" id="botCent" data-cell-index='7'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+          <div class="col-xs-4" id="botRight" data-cell-index='8'>
+            <div class="x">X</div>
+            <div class="o">O</div>
+            <div class="hover-x">X</div>
+            <div class="hover-o">O</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
+
+  </div>
+</body>
+
+</html>
